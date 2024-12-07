@@ -17,9 +17,6 @@ export PATH="$TC_DIR/bin:$PATH"
 if [ "$DEVICE_MODEL" == "SM-F926N" ]; then
 	DEVICE_NAME="q2q"
 	DEFCONFIG=vendor/q2q_kor_singlex_defconfig
-elif [ "$DEVICE_MODEL" == "SM-G9960" ]; then
-	DEVICE_NAME="t2q"
-	DEFCONFIG=vendor/t2q_chn_hkx_defconfig
 else
 	echo "Config not found"
 	exit
@@ -93,7 +90,6 @@ else
 	fi
 	find "$(pwd)/out/modules" -type f -iname "*.ko" -exec cp -r {} ./AnyKernel3/modules/vendor/lib/modules/ \;
 	cp ./out/arch/arm64/boot/Image ./AnyKernel3/
-	cp ./out/arch/arm64/boot/dtbo.img ./AnyKernel3/
 	cd AnyKernel3
 	rm -rf Lavender*
 	zip -r9 $ZIP_NAME . -x '*.git*' '*patch*' '*ramdisk*' 'LICENSE' 'README.md'
