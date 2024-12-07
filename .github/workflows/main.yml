@@ -62,4 +62,4 @@ jobs:
             Kernel: 5.4.233
             Clang: WeebX
         env:
-          GITHUB_TOKEN: ${{ secrets.TEST }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
