@@ -68,7 +68,7 @@ if [ -d "AnyKernel3" ]; then
 		mkdir AnyKernel3/modules/vendor/lib/modules/
 	fi
 	find "$(pwd)/out/modules" -type f -iname "*.ko" -exec cp -r {} ./AnyKernel3/modules/vendor/lib/modules/ \;
-	cp ./out/arch/arm64/boot/Imag rnel3/
+	cp ./out/arch/arm64/boot/Image ./AnyKernel3/
 	if [ -f "./out/arch/arm64/boot/dtbo.img" ]; then
             cp ./out/arch/arm64/boot/dtbo.img ./AnyKernel3/
         else
@@ -94,6 +94,11 @@ else
 	fi
 	find "$(pwd)/out/modules" -type f -iname "*.ko" -exec cp -r {} ./AnyKernel3/modules/vendor/lib/modules/ \;
 	cp ./out/arch/arm64/boot/Image ./AnyKernel3/
+	if [ -f "./out/arch/arm64/boot/dtbo.img" ]; then
+            cp ./out/arch/arm64/boot/dtbo.img ./AnyKernel3/
+        else
+            echo "dtbo.img not found, skipping..."
+        fi        
 	cd AnyKernel3
 	rm -rf Lavender*
 	zip -r9 $ZIP_NAME . -x '*.git*' '*patch*' '*ramdisk*' 'LICENSE' 'README.md'
