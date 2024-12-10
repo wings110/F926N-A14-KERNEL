@@ -5,7 +5,7 @@ on:
   pull_request:
   push:
     branches:
-      - 'a14'
+      - 'main'
 
 jobs:
   build_lavender:
